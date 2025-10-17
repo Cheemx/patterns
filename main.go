@@ -7,7 +7,7 @@ import "fmt"
 // Print them inside the inner for loop
 // Observe symmetry in case of some pattern
 func main() {
-	printNumsPattern(5)
+	printCapitalAlphaRowsInRightTriangle(5)
 }
 
 /*
@@ -265,6 +265,96 @@ func printNumsPattern(n int) {
 		for j := 1; j <= i; j++ {
 			fmt.Printf("%d ", num)
 			num++
+		}
+		fmt.Println("")
+	}
+}
+
+/*
+Print Valley of numbers like following
+1        1
+12      21
+123    321
+1234  4321
+1234554321
+*/
+func printValleyOfNums(n int) {
+	for i := 1; i <= n; i++ {
+		for j := 1; j <= i; j++ {
+			fmt.Print(j)
+		}
+
+		for j := 1; j <= 2*(n-i); j++ {
+			fmt.Print(" ")
+		}
+
+		for j := i; j > 0; j-- {
+			fmt.Print(j)
+		}
+
+		fmt.Println()
+	}
+}
+
+/*
+A
+A B
+A B C
+A B C D
+A B C D E
+*/
+func printCapitalAlphabetsRightTriangle(n int) {
+	for i := 1; i <= n; i++ {
+		for j := 1; j <= i; j++ {
+			fmt.Printf("%c ", 65+j-1)
+		}
+		fmt.Println("")
+	}
+}
+
+/*
+A B C D E
+A B C D
+A B C
+A B
+A
+*/
+func printCapitalAlphabetsInReverseRightTriangle(n int) {
+	for i := n; i > 0; i-- {
+		for j := 1; j <= i; j++ {
+			fmt.Printf("%c ", 65+j-1)
+		}
+		fmt.Println("")
+	}
+}
+
+/*
+E E E E E
+D D D D
+C C C
+B B
+A
+*/
+func printCapitalAlphaRowsInReverseRightTriangle(n int) {
+	for i := n; i > 0; i-- {
+		for j := 1; j <= i; j++ {
+			fmt.Printf("%c ", 65+i-1)
+		}
+		fmt.Println("")
+	}
+}
+
+/*
+A
+B B
+C C C
+D D D D
+E E E E E
+*/
+func printCapitalAlphaRowsInRightTriangle(n int) {
+	for i := 1; i <= n; i++ {
+		for j := 1; j <= i; j++ {
+			fmt.Printf("%c ", 65+i-1)
 		}
 		fmt.Println("")
 	}
