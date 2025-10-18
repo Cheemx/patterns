@@ -7,7 +7,7 @@ import "fmt"
 // Print them inside the inner for loop
 // Observe symmetry in case of some pattern
 func main() {
-	printCapitalAlphaRowsInRightTriangle(5)
+	PrintLastPattern(5)
 }
 
 /*
@@ -355,6 +355,174 @@ func printCapitalAlphaRowsInRightTriangle(n int) {
 	for i := 1; i <= n; i++ {
 		for j := 1; j <= i; j++ {
 			fmt.Printf("%c ", 65+i-1)
+		}
+		fmt.Println("")
+	}
+}
+
+/*
+Print the following alphabets in triangle!
+
+		   A
+		  ABA
+		 ABCBA
+		ABCDCBA
+	   ABCDEDCBA
+*/
+func PrintAlphaTriangle(n int) {
+	for i := 0; i < n; i++ {
+		for j := 0; j < n-i-1; j++ {
+			fmt.Print(" ")
+		}
+		for j := 0; j < (2*i+1)/2; j++ {
+			fmt.Printf("%c", 65+j)
+		}
+		for j := (2*i + 1) / 2; j >= 0; j-- {
+			fmt.Printf("%c", 65+j)
+		}
+		for j := 0; j < n-i-1; j++ {
+			fmt.Print(" ")
+		}
+		fmt.Println("")
+	}
+}
+
+/*
+Print the following alphabets in triangle!
+E
+DE
+CDE
+BCDE
+ABCDE
+*/
+func PrintRightAlphaTriangle(n int) {
+	for i := 1; i <= n; i++ {
+		for j := i; j > 0; j-- {
+			fmt.Printf("%c", 65+n-j)
+		}
+		fmt.Println("")
+	}
+}
+
+/*
+Print the following diamond pattern
+**********
+****  ****
+***    ***
+**      **
+*        *
+*        *
+**      **
+***    ***
+****  ****
+**********
+*/
+func PrintEmptyDiamond(n int) {
+	for i := 0; i < n; i++ {
+		for j := n - i; j > 0; j-- {
+			fmt.Print("*")
+		}
+		for j := 0; j < 2*i; j++ {
+			fmt.Print(" ")
+		}
+		for j := n - i; j > 0; j-- {
+			fmt.Print("*")
+		}
+		if i != n-1 {
+			fmt.Println("")
+		}
+	}
+	for i := n; i >= 0; i-- {
+		for j := n - i; j > 0; j-- {
+			fmt.Print("*")
+		}
+		for j := 0; j < 2*i; j++ {
+			fmt.Print(" ")
+		}
+		for j := n - i; j > 0; j-- {
+			fmt.Print("*")
+		}
+		fmt.Println("")
+	}
+}
+
+/*
+Print the following diamond pattern
+*        *
+**      **
+***    ***
+****  ****
+**********
+****  ****
+***    ***
+**      **
+*        *
+*/
+func PrintReverseEmptyDiamond(n int) {
+	for i := n; i >= 0; i-- {
+		for j := n - i; j > 0; j-- {
+			fmt.Print("*")
+		}
+		for j := 0; j < 2*i; j++ {
+			fmt.Print(" ")
+		}
+		for j := n - i; j > 0; j-- {
+			fmt.Print("*")
+		}
+		fmt.Println("")
+	}
+	for i := 1; i < n; i++ {
+		for j := n - i; j > 0; j-- {
+			fmt.Print("*")
+		}
+		for j := 0; j < 2*i; j++ {
+			fmt.Print(" ")
+		}
+		for j := n - i; j > 0; j-- {
+			fmt.Print("*")
+		}
+		fmt.Println("")
+	}
+}
+
+/*
+Print square
+*****
+*   *
+*   *
+*   *
+*****
+*/
+func PrintSquare(n int) {
+	for i := 0; i < n; i++ {
+		for j := 0; j < n; j++ {
+			if i == 0 || i == n-1 || j == 0 || j == n-1 {
+				fmt.Print("*")
+			} else {
+				fmt.Print(" ")
+			}
+		}
+		fmt.Println("")
+	}
+}
+
+/*
+4444444
+4333334
+4322234
+4321234
+4322234
+4333334
+4444444
+*/
+func PrintLastPattern(n int) {
+	for i := 0; i < 2*n-1; i++ {
+		for j := 0; j < 2*n-1; j++ {
+			top := i
+			left := j
+			right := 2*n - 2 - j
+			bottom := 2*n - 2 - i
+			fmt.Printf("%d", n-min(min(top, bottom), min(left, right)))
 		}
 		fmt.Println("")
 	}
